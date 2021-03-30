@@ -111,6 +111,24 @@ namespace RedBadgeRestarantRater.Controllers
 
         }
 
+        //GET Restaurant/Details/{ID}
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            Restaurant restaurant = _db.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+
+
 
 
     }
